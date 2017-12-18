@@ -156,8 +156,9 @@
        <tr>
         <td align=center width=100px>
         <center>
-        <span style="font-size:20px">University of California, Berkeley</span>
-        </center>
+          <span style="font-size:20px">University of California, Berkeley</span><br>
+<span style="font-size:20px">MPI for Intelligent Systems, T&uumlbingen, Germany<br> University of Maryland, College Park
+</span></center>
         </td>
      </tr>
     </table>
@@ -167,31 +168,46 @@
                 <tr>
                     <td width=600px>
                       <center>
-                          <a href="./resources/images/teaser.png"><img src = "./resources/images/teaser.png" height="350px"></img></href></a><br>
+                          <a href="./resources/images/teaser.png"><img src = "./resources/images/teaser.png" height="400px"></img></href></a><br>
                     </center>
                     </td>
                 </tr>
                     <td width=600px>
-                      <center>
+                      <!-- <center> -->
                           <span style="font-size:14px"><i> <span style="font-weight:bold">Human
                           Mesh Recovery (HMR): End-to-end adversarial learning of human pose and shape.</span> We describe a real time framework for recovering the 3D joint angles and shape of the body from a single RGB image. Bottom row shows results from a model trained without using any coupled 2D-to-3D supervision. We infer the full 3D body even in case of occlusions and truncations. Note that we capture head and limb orientations.</i>
-                    </center>
+                    <!-- </center> -->
                     </td>
                 </tr>
             </table>
 
             <br>
-Abstract
+We describe Human Mesh Recovery (HMR), an end-to-end framework for reconstructing a full
+3D mesh of a human body from a single RGB image. 
+In contrast to most current methods that compute 2D or 3D joint
+locations, we produce a richer and more useful mesh representation that is
+parameterized by shape and 3D joint angles. The main objective is to minimize
+the reprojection loss of keypoints, which allow our model to be trained using \emph{in-the-wild} images that only have
+ground truth 2D annotations.
+However, reprojection loss alone is highly under constrained.
+In this work we address this problem by introducing an adversary trained to
+tell whether a human body parameter is real or not using a large database of
+3D human meshes. We show that HMR can be trained with and <b>without</b> using
+	    any paired 2D-to-3D supervision.  We do not rely on intermediate 2D
+	    keypoint detection and infer 3D pose and shape parameters directly
+	    from image pixels. Our model runs in real-time given a bounding box
+	    containing the person.  We demonstrate our approach on various images <i>in-the-wild</i> and out-perform previous optimization-based
+methods that output 3D meshes and show competitive results on tasks such as 3D joint location estimation and part segmentation.
             <br><br>
           <hr>
             <table align=center width=650>
              <center><h1>Paper</h1></center>
                 <tr>
-                  <td><a href="https://arxiv.org/pdf/1712.01812.pdf"><img style="height:180px" src="./resources/images/paper.png"/></a></td>
-                  <td><span style="font-size:14pt">Kanazawa, Black, Jacobs, Malik.<br><br>
+                  <!-- <td><a href="https://arxiv.org/pdf/1712.01812.pdf"><img style="height:180px" src="./resources/images/paper.png"/></a></td> -->
+                  <td><span style="font-size:14pt">Angjoo Kanazawa, Michael
+                          J. Black, David W. Jacobs, Jitendra Malik.<br><br>
                           End-to-end Recovery of Human Shape and Pose<br><br>
                   arXiv, Dec 2017.<br>
-                  <!-- [hosted on <a href="#">arXiv</a>]</a> -->
                     </td>
               </tr>
             </table>
@@ -212,26 +228,26 @@ Abstract
 
                 <hr>
 
-         <center><h1>Code</h1></center>
-            <table align=center width=1000px>
-                <tr>
-                        <center>
-                          <a href='https://github.com/akanazawa/hmr'><img class="round" style="height:250" src="./resources/images/overview.png"/></a>
-                        </center>
-              </tr>
-          </table>
+         <!-- <center><h1>Code</h1></center> -->
+         <!--    <table align=center width=1000px> -->
+         <!--        <tr> -->
+         <!--                <center> -->
+         <!--                  <a href='https://github.com/akanazawa/hmr'><img class="round" style="height:250" src="./resources/images/overview.png"/></a> -->
+         <!--                </center> -->
+         <!--      </tr> -->
+         <!--  </table> -->
 
-            <table align=center width=800px>
-              <tr><center> <br>
-                <span style="font-size:28px">&nbsp;<a href='https://github.com/akanazawa/hmr'>[coming
-                soon]</a>
+         <!--    <table align=center width=800px> -->
+         <!--      <tr><center> <br> -->
+         <!--        <span style="font-size:28px">&nbsp;<a href='https://github.com/akanazawa/hmr'>[coming -->
+         <!--        soon]</a> -->
 
-                <span style="font-size:28px"></a></span>
-              <br>
-              </center></tr>
-          </table>
-            <br>
-          <hr>
+         <!--        <span style="font-size:28px"></a></span> -->
+         <!--      <br> -->
+         <!--      </center></tr> -->
+         <!--  </table> -->
+         <!--    <br> -->
+         <!--  <hr> -->
 
           <!-- <center><h1>Results</h1></center> -->
           <!-- <table align=center width=900px> -->
@@ -266,18 +282,18 @@ Abstract
           <!--     </tr> -->
           <!-- </table> -->
           <!--  <hr> -->
-            <table align=center width=1100px>
-                <tr>
-                    <td>
-                      <left>
-                <center><h1>Acknowledgements</h1></center>
-This webpage template was borrowed from 
-		some <a href="https://richzhang.github.io/colorization/">colorful
-		  folks</a> .
-            </left>
-        </td>
-        </tr>
-        </table>
+<!--             <table align=center width=1100px> -->
+<!--                 <tr> -->
+<!--                     <td> -->
+<!--                       <left> -->
+<!--                 <center><h1>Acknowledgements</h1></center> -->
+<!-- This webpage template was borrowed from  -->
+<!-- 		some <a href="https://richzhang.github.io/colorization/">colorful -->
+<!-- 		  folks</a> . -->
+<!--             </left> -->
+<!--         </td> -->
+<!--         </tr> -->
+<!--         </table> -->
 
         <br><br>
 </body>
