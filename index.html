@@ -1,0 +1,284 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+    body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight:300;
+        font-size:18px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1100px;
+    }
+
+    h1 {
+        font-weight:300;
+    }
+
+    .disclaimerbox {
+        background-color: #eee;
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+        padding: 20px;
+    }
+
+    video.header-vid {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.header-img {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    img.rounded {
+        border: 1px solid #eeeeee;
+        border-radius: 10px ;
+        -moz-border-radius: 10px ;
+        -webkit-border-radius: 10px ;
+    }
+
+    a:link,a:visited
+    {
+        color: #1367a7;
+        text-decoration: none;
+    }
+    a:hover {
+        color: #208799;
+    }
+
+    td.dl-link {
+        height: 160px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
+                15px 15px 0 0px #fff, /* The fourth layer */
+                15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
+                20px 20px 0 0px #fff, /* The fifth layer */
+                20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
+                25px 25px 0 0px #fff, /* The fifth layer */
+                25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+
+    .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow:
+                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
+                5px 5px 0 0px #fff, /* The second layer */
+                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
+                10px 10px 0 0px #fff, /* The third layer */
+                10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 5px;
+    }
+
+    .vert-cent {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    hr
+    {
+        border: 0;
+        height: 1.5px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+</style>
+
+<html>
+  <head>
+        <title>Human Mesh Recovery</title>
+        <meta property="og:title" content="Factored 3D" />
+  </head>
+
+  <body>
+    <br>
+    <center>
+      <span style="font-size:42px">End-to-end Recovery of Human Shape and Pose
+	</span>
+    </center>
+
+    <br><br>
+      <table align=center width=900px>
+       <tr>
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:20px"><a href="http://www.cs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a></span>
+        </center>
+        </td>
+
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:20px"><a href="https://ps.is.tuebingen.mpg.de/person/black">Michael
+        J Black</a></span>
+        </center>
+        </td>
+
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:20px"><a href="https://www.cs.umd.edu/~djacobs/">David
+        W. Jacobs</a></span>
+        </center>
+        </td>
+
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:20px"><a href="http://www.eecs.berkeley.edu/~malik/">Jitendra Malik</a></span>
+        </center>
+        </td>
+     </tr>
+    </table>
+
+    <br>
+    <table align=center width=700px>
+       <tr>
+        <td align=center width=100px>
+        <center>
+        <span style="font-size:20px">University of California, Berkeley</span>
+        </center>
+        </td>
+     </tr>
+    </table>
+
+            <br>
+            <table align=center width=900px>
+                <tr>
+                    <td width=600px>
+                      <center>
+                          <a href="./resources/images/teaser.png"><img src = "./resources/images/teaser.png" height="350px"></img></href></a><br>
+                    </center>
+                    </td>
+                </tr>
+                    <td width=600px>
+                      <center>
+                          <span style="font-size:14px"><i> <span style="font-weight:bold">Human
+                          Mesh Recovery (HMR): End-to-end adversarial learning of human pose and shape.</span> We describe a real time framework for recovering the 3D joint angles and shape of the body from a single RGB image. Bottom row shows results from a model trained without using any coupled 2D-to-3D supervision. We infer the full 3D body even in case of occlusions and truncations. Note that we capture head and limb orientations.</i>
+                    </center>
+                    </td>
+                </tr>
+            </table>
+
+            <br>
+Abstract
+            <br><br>
+          <hr>
+            <table align=center width=650>
+             <center><h1>Paper</h1></center>
+                <tr>
+                  <td><a href="https://arxiv.org/pdf/1712.01812.pdf"><img style="height:180px" src="./resources/images/paper.png"/></a></td>
+                  <td><span style="font-size:14pt">Kanazawa, Black, Jacobs, Malik.<br><br>
+                          End-to-end Recovery of Human Shape and Pose<br><br>
+                  arXiv, Dec 2017.<br>
+                  <!-- [hosted on <a href="#">arXiv</a>]</a> -->
+                    </td>
+              </tr>
+            </table>
+          <br>
+
+          <table align=center width=180px>
+              <tr>
+                  <td><span style="font-size:14pt"><center>
+                      <a href="https://arxiv.org/">[pdf]</a>
+                    </center></td>
+
+                  <td><span style="font-size:14pt"><center>
+                      <a href="./resources/bibtex.txt">[Bibtex]</a>
+                    </center></td>
+              </tr>
+            </table>
+              <br>
+
+                <hr>
+
+         <center><h1>Code</h1></center>
+            <table align=center width=1000px>
+                <tr>
+                        <center>
+                          <a href='https://github.com/akanazawa/hmr'><img class="round" style="height:250" src="./resources/images/overview.png"/></a>
+                        </center>
+              </tr>
+          </table>
+
+            <table align=center width=800px>
+              <tr><center> <br>
+                <span style="font-size:28px">&nbsp;<a href='https://github.com/akanazawa/hmr'>[coming
+                soon]</a>
+
+                <span style="font-size:28px"></a></span>
+              <br>
+              </center></tr>
+          </table>
+            <br>
+          <hr>
+
+          <!-- <center><h1>Results</h1></center> -->
+          <!-- <table align=center width=900px> -->
+          <!--     <tr> -->
+          <!--         <td width=600px> -->
+          <!--           <center> -->
+          <!--               <a href="./resources/images/vis_comparison.png"><img src = "./resources/images/vis_comparison.png" height="350px"></img></href></a><br> -->
+          <!--         </center> -->
+          <!--         </td> -->
+          <!--     </tr> -->
+          <!--         <td width=600px> -->
+          <!--           <center> -->
+          <!--               <span style="font-size:14px"><i> <span style="font-weight:bold">Qualitative comparison.</span> .</i> -->
+          <!--         </center> -->
+          <!--         </td> -->
+          <!--     </tr> -->
+          <!-- </table> -->
+          <!-- <br> -->
+          <!-- <table align=center width=900px> -->
+          <!--     <tr> -->
+          <!--         <td width=600px> -->
+          <!--           <center> -->
+          <!--               <a href="./resources/images/eval_comparison.png"><img src = "./resources/images/eval_comparison.png" height="170px"></img></href></a><br> -->
+          <!--         </center> -->
+          <!--         </td> -->
+          <!--     </tr> -->
+          <!--         <td width=600px> -->
+          <!--           <center> -->
+          <!--               <span style="font-size:14px"><i> <span style="font-weight:bold">Quantitative comparison.</span> </i> -->
+          <!--         </center> -->
+          <!--         </td> -->
+          <!--     </tr> -->
+          <!-- </table> -->
+          <!--  <hr> -->
+            <table align=center width=1100px>
+                <tr>
+                    <td>
+                      <left>
+                <center><h1>Acknowledgements</h1></center>
+This webpage template was borrowed from 
+		some <a href="https://richzhang.github.io/colorization/">colorful
+		  folks</a> .
+            </left>
+        </td>
+        </tr>
+        </table>
+
+        <br><br>
+</body>
+</html>

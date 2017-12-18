@@ -1,0 +1,6 @@
+@article{hmrKanazawa17,
+  title={End-to-end Recovery of Human Shape and Pose},
+  author = {Angjoo Kanazawa, Michael J. Black, David W. Jacobs, Jitendra Malik},
+  journal={arXiv},
+  year={2017}
+}
