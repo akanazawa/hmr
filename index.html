@@ -238,26 +238,84 @@
 	      <tr>
 	      <td><center> <br> 
 		  <span style="font-size:20px">&nbsp;<a href='https://github.com/akanazawa/hmr'>
-		      Code [coming soon]</a> 
-		    <br> 
+		      Code [coming soon]</a> </span>
+		  <br> 
 		</center>
 	      </td>
 	      </tr>
 	    </table>
 	    <br>
-	    
+		We present an end-to-end framework for recovering a full 3D mesh
+		of a human body from a single RGB image. We use the generative
+		human body model <a href="http://smpl.is.tue.mpg.de/">SMPL</a>,
+		which parameterizes the mesh by 3D joint angles and a
+		low-dimensional linear shape space. <!-- We estimate the 3D joint angles, -->
+		<!-- the shape, as well as the weak-perspective camera of the input -->
+		<!-- image. -->
+		Estimating a 3D mesh opens the door to a wide range of applications such as foreground and
+		part segmentation and dense correspondences that are beyond
+		what is practical with a simple skeleton. The output mesh can be
+		immediately used by animators, modified, measured, manipulated
+		and retargeted. Our output is also holistic – we always infer
+		the full 3D body even in case of occlusions and
+	    truncations. <br>
+	    <br>
+	    There are several challenges in training such an model in an end-to-end
+	    manner:
+	    <ol>
+	      <li> First is the lack of large-scale ground truth 3D
+		annotation for <i>in-the-wild</i> images. Existing datasets with
+		accurate 3D annotations are captured in constrained
+		environments
+		(<a href="http://humaneva.is.tue.mpg.de/">HumanEva</a>
+		, <a href="http://vision.imar.ro/human3.6m/description.php">Human3.6M</a>
+		, <a href="http://gvv.mpi-inf.mpg.de/3dhp-dataset/">MPI-INF-3DHP</a>
+		). Models trained on these datasets do not generalize
+		well to the richness of images in the real world.
+		
+		<li> Second is the inherent ambiguities in single-view 2D-to-3D
+		mapping. Many of these configurations may not be
+		anthropometrically reasonable, such as impossible joint angles
+		or extremely skinny bodies. In addition, estimating the camera explicitly introduces an additional scale ambiguity between the size of the person and the camera distance.
+	    </ol>
+	    In this work we propose a novel approach to mesh reconstruction that
+	    addresses both of these challenges. The key insight is even though
+	    we don't have a large-scale paired 2D-to-3D labels of images in-the-wild, we have
+	    a lot of <i>unpaired</i> datasets: large-scale 2D keypoint
+	    annotations of in-the-wild images
+	    (<a href="http://sam.johnson.io/research/lsp.html">LSP</a>
+	    , <a href="http://human-pose.mpi-inf.mpg.de/">MPII</a>
+	    , <a href="http://cocodataset.org/#keypoints-challenge2017">COCO</a>
+	    , etc) and a
+	    separate large-scale dataset of 3D meshes of people with various
+	    poses and shapes from MoCap. Our key contribution is to take
+	    advantage of these <i>unpaired</i> 2D keypoint annotations and 3D
+	    scans in a conditional generative adversarial manner. <br>
+
+	    The idea is that, given an image, the network has to infer the 3D
+	    mesh parameters and the camera such that the 3D keypoints match the
+	    annotated 2D keypoints after projection. To deal with ambiguities,
+	    these parameters are sent to a discriminator network, whose task is
+	    to determine if the 3D parameters correspond to bodies of real
+	    humans or not. Hence the network is encouraged to output parameters
+	    on the human manifold and the discriminator acts as a weak
+	    supervision. The network implicitly learns the angle limits for each
+	    joint and is discouraged from making people with unusual body
+	    shapes.
+	    <br>
+	    <br>
+	    We take advantage of the structure of the body model and propose a
+	    factorized adversarial prior. We show that we can train a model even
+	    <i>without</i> using any paired 2D-to-3D training data (pink meshes are all
+	    results of this unpaired model). Even without using any paired
+	    2D-to-3D supervision, HMR produces reasonable 3D
+	    reconstructions. This is most exciting because it opens up
+	    possibilities for learning 3D from large amounts of 2D data.
+	    <br>
+	    <br>
+	    Please see the <a href="https://arxiv.org/pdf/1712.06584.pdf">paper</a> for more details.
+	    <hr>
 	 <br>
-	 <hr>
-	 <br>
-         <!--   <table align=center width=800px>  -->
-         <!--     <tr><center> <br>  -->
-          <!--       <span style="font-size:14px">&nbsp;<a href='https://github.com/akanazawa/hmr'> -->
-          <!--       Code [coming soon]</a>  -->
-          <!--     <br>  -->
-          <!--     </center></tr>  -->
-          <!-- </table>  -->
-          <!--   <br>  -->
-          <!-- <hr> -->
             <table align=center width=1100px>
                 <tr>
                     <td>
