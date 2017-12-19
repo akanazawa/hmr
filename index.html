@@ -62,37 +62,6 @@
         font-size: 22px;
     }
 
-    .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-        box-shadow:
-                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
-                5px 5px 0 0px #fff, /* The second layer */
-                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
-                10px 10px 0 0px #fff, /* The third layer */
-                10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
-                15px 15px 0 0px #fff, /* The fourth layer */
-                15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
-                20px 20px 0 0px #fff, /* The fifth layer */
-                20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
-                25px 25px 0 0px #fff, /* The fifth layer */
-                25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
-        margin-left: 10px;
-        margin-right: 45px;
-    }
-
-
-    .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-        box-shadow:
-                0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
-                5px 5px 0 0px #fff, /* The second layer */
-                5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
-                10px 10px 0 0px #fff, /* The third layer */
-                10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
-        margin-top: 5px;
-        margin-left: 10px;
-        margin-right: 30px;
-        margin-bottom: 5px;
-    }
-
     .vert-cent {
         position: relative;
         top: 50%;
@@ -102,8 +71,10 @@
     hr
     {
         border: 0;
-        height: 1.5px;
-        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(10, 10, 10, 0),
+    rgba(10, 10, 10, 0.75), rgba(10, 10, 10, 0));
+        margin: 1em 0 1em 0;
     }
 </style>
 
@@ -203,11 +174,11 @@ methods that output 3D meshes and show competitive results on tasks such as 3D j
             <table align=center width=650>
              <center><h1>Paper</h1></center>
                 <tr>
-                  <!-- <td><a href="https://arxiv.org/pdf/1712.01812.pdf"><img style="height:180px" src="./resources/images/paper.png"/></a></td> -->
-                  <td><span style="font-size:14pt">Angjoo Kanazawa, Michael
-                          J. Black, David W. Jacobs, Jitendra Malik.<br><br>
-                          End-to-end Recovery of Human Shape and Pose<br><br>
-                  arXiv, Dec 2017.<br>
+                  <td style="padding:1em"><a href="https://arxiv.org/pdf/TODO.pdf"><img style="height:180px" src="./resources/images/paper_thumb.png"/></a></td>
+                  <td style="padding:1em"><span style="font-size:14pt">Angjoo Kanazawa, Michael
+                      J. Black, David W. Jacobs, Jitendra Malik.<br><br>
+                      End-to-end Recovery of Human Shape and Pose<br><br>
+                      arXiv, Dec 2017.<br>
                     </td>
               </tr>
             </table>
@@ -216,7 +187,7 @@ methods that output 3D meshes and show competitive results on tasks such as 3D j
           <table align=center width=180px>
               <tr>
                   <td><span style="font-size:14pt"><center>
-                      <a href="https://arxiv.org/">[pdf]</a>
+                      <a href="https://arxiv.org/TODO">[pdf]</a>
                     </center></td>
 
                   <td><span style="font-size:14pt"><center>
@@ -224,9 +195,26 @@ methods that output 3D meshes and show competitive results on tasks such as 3D j
                     </center></td>
               </tr>
             </table>
-              <br>
-
-                <hr>
+          <br>
+              <hr>
+         <!-- <center><h1>Video</h1></center> -->
+         <!--    <table align=center width=1000px> -->
+         <!--        <tr> -->
+         <!--          <center> -->
+	 <!-- 	    <img class="round" style="height:300" src="./resources/images/overview.png"/> -->
+         <!--          </center> -->
+         <!--      </tr> -->
+         <!--  </table>	       -->
+	  
+              <!-- <hr> -->
+         <!-- <center><h1>Overview</h1></center> -->
+         <!--    <table align=center width=1000px> -->
+         <!--        <tr> -->
+         <!--          <center> -->
+	 <!-- 	    <img class="round" style="height:300" src="./resources/images/overview.png"/> -->
+         <!--          </center> -->
+         <!--      </tr> -->
+         <!--  </table>	       -->
 
          <!-- <center><h1>Code</h1></center> -->
          <!--    <table align=center width=1000px> -->
@@ -281,19 +269,23 @@ methods that output 3D meshes and show competitive results on tasks such as 3D j
           <!--         </td> -->
           <!--     </tr> -->
           <!-- </table> -->
-          <!--  <hr> -->
-<!--             <table align=center width=1100px> -->
-<!--                 <tr> -->
-<!--                     <td> -->
-<!--                       <left> -->
-<!--                 <center><h1>Acknowledgements</h1></center> -->
-<!-- This webpage template was borrowed from  -->
-<!-- 		some <a href="https://richzhang.github.io/colorization/">colorful -->
-<!-- 		  folks</a> . -->
-<!--             </left> -->
-<!--         </td> -->
-<!--         </tr> -->
-<!--         </table> -->
+           <!-- <hr> -->
+            <table align=center width=1100px>
+                <tr>
+                    <td>
+                      <left>
+			<center><h1>Acknowledgements</h1></center>
+			We thank Naureen Mahmood for providing MoShed
+			datasets and  mesh retargeting for character animation, Dushyant
+			Mehta for his assistance on MPI-INF-3DHP, and Shubham Tulsiani,
+			Abhishek Kar, Saurabh Gupta, David Fouhey and Ziwei Liu for helpful
+			discussions. This research was supported in part by <a href="http://bair.berkeley.edu/">BAIR</a> and NSF Award IIS-1526234.			
+		This webpage template is taken from <a href="https://shubhtuls.github.io/drc/">other 3D objects</a> who borrowed it
+		from some <a href="https://richzhang.github.io/colorization/">colorful folks</a>.
+            </left>
+        </td>
+        </tr>
+        </table>
 
         <br><br>
 </body>
