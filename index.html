@@ -153,123 +153,102 @@
             </table>
 
             <br>
-We present Human Mesh Recovery (HMR), an end-to-end framework for reconstructing a full
-3D mesh of a human body from a single RGB image. 
-In contrast to most current methods that compute 2D or 3D joint
-locations, we produce a richer and more useful mesh representation that is
-parameterized by shape and 3D joint angles. The main objective is to minimize
-the reprojection loss of keypoints, which allow our model to be trained using \emph{in-the-wild} images that only have
-ground truth 2D annotations.
-However, reprojection loss alone is highly under constrained.
-In this work we address this problem by introducing an adversary trained to
-tell whether a human body parameter is real or not using a large database of
-3D human meshes. We show that HMR can be trained with and <b>without</b> using
+	    We present Human Mesh Recovery (HMR), an end-to-end framework for reconstructing a full
+	    3D mesh of a human body from a single RGB image. 
+	    In contrast to most current methods that compute 2D or 3D joint
+	    locations, we produce a richer and more useful mesh representation that is
+	    parameterized by shape and 3D joint angles. The main objective is to minimize
+	    the reprojection loss of keypoints, which allow our model to be trained using \emph{in-the-wild} images that only have
+	    ground truth 2D annotations.
+	    However, reprojection loss alone is highly under constrained.
+	    In this work we address this problem by introducing an adversary trained to
+	    tell whether a human body parameter is real or not using a large database of
+	    3D human meshes. We show that HMR can be trained with and <b>without</b> using
 	    any paired 2D-to-3D supervision.  We do not rely on intermediate 2D
 	    keypoint detection and infer 3D pose and shape parameters directly
 	    from image pixels. Our model runs in real-time given a bounding box
 	    containing the person.  We demonstrate our approach on various images <i>in-the-wild</i> and out-perform previous optimization-based
-methods that output 3D meshes and show competitive results on tasks such as 3D joint location estimation and part segmentation.
+	    methods that output 3D meshes and show competitive results on tasks such as 3D joint location estimation and part segmentation.
             <br><br>
-          <hr>
+            <hr>
             <table align=center width=650>
-             <center><h1>Paper</h1></center>
-                <tr>
-                  <td style="padding:1em"><a href="https://arxiv.org/abs/1712.06584"><img style="height:180px" src="./resources/images/paper_thumb.png"/></a></td>
-                  <td style="padding:1em"><span style="font-size:14pt">Angjoo Kanazawa, Michael
-                      J. Black, David W. Jacobs, Jitendra Malik.<br><br>
-                      End-to-end Recovery of Human Shape and Pose<br><br>
-                      arXiv, Dec 2017.<br>
-                    </td>
-              </tr>
-            </table>
-          <br>
-
-          <table align=center width=180px>
+              <center><h1>Paper</h1></center>
               <tr>
-                  <td><span style="font-size:14pt"><center>
-                      <a href="https://arxiv.org/pdf/1712.06584.pdf">[pdf]</a>
-                    </center></td>
-
-                  <td><span style="font-size:14pt"><center>
-                      <a href="./resources/bibtex.txt">[Bibtex]</a>
-                    </center></td>
+                <td style="padding:1em"><a href="https://arxiv.org/abs/1712.06584"><img style="height:180px" src="./resources/images/paper_thumb.png"/></a></td>
+                <td style="padding:1em"><span style="font-size:14pt">Angjoo Kanazawa, Michael
+                    J. Black, David W. Jacobs, Jitendra Malik.<br><br>
+                    End-to-end Recovery of Human Shape and Pose<br><br>
+                    arXiv, Dec 2017.<br> </span>
+                </td>
               </tr>
             </table>
-          <br>
-              <hr>
-         <!-- <center><h1>Video</h1></center> -->
-         <!--    <table align=center width=1000px> -->
-         <!--        <tr> -->
-         <!--          <center> -->
-	 <!-- 	    <img class="round" style="height:300" src="./resources/images/overview.png"/> -->
-         <!--          </center> -->
-         <!--      </tr> -->
-         <!--  </table>	       -->
-	  
-              <!-- <hr> -->
-         <!-- <center><h1>Overview</h1></center> -->
-         <!--    <table align=center width=1000px> -->
-         <!--        <tr> -->
-         <!--          <center> -->
-	 <!-- 	    <img class="round" style="height:300" src="./resources/images/overview.png"/> -->
-         <!--          </center> -->
-         <!--      </tr> -->
-         <!--  </table>	       -->
+            <br>
 
-         <!-- <center><h1>Code</h1></center> -->
-         <!--    <table align=center width=1000px> -->
-         <!--        <tr> -->
-         <!--                <center> -->
-         <!--                  <a href='https://github.com/akanazawa/hmr'><img class="round" style="height:250" src="./resources/images/overview.png"/></a> -->
-         <!--                </center> -->
-         <!--      </tr> -->
-         <!--  </table> -->
-
-         <!--    <table align=center width=800px> -->
-         <!--      <tr><center> <br> -->
-         <!--        <span style="font-size:28px">&nbsp;<a href='https://github.com/akanazawa/hmr'>[coming -->
-         <!--        soon]</a> -->
-
-         <!--        <span style="font-size:28px"></a></span> -->
-         <!--      <br> -->
-         <!--      </center></tr> -->
-         <!--  </table> -->
-         <!--    <br> -->
-         <!--  <hr> -->
-
-          <!-- <center><h1>Results</h1></center> -->
-          <!-- <table align=center width=900px> -->
-          <!--     <tr> -->
-          <!--         <td width=600px> -->
-          <!--           <center> -->
-          <!--               <a href="./resources/images/vis_comparison.png"><img src = "./resources/images/vis_comparison.png" height="350px"></img></href></a><br> -->
-          <!--         </center> -->
-          <!--         </td> -->
-          <!--     </tr> -->
-          <!--         <td width=600px> -->
-          <!--           <center> -->
-          <!--               <span style="font-size:14px"><i> <span style="font-weight:bold">Qualitative comparison.</span> .</i> -->
-          <!--         </center> -->
-          <!--         </td> -->
-          <!--     </tr> -->
-          <!-- </table> -->
-          <!-- <br> -->
-          <!-- <table align=center width=900px> -->
-          <!--     <tr> -->
-          <!--         <td width=600px> -->
-          <!--           <center> -->
-          <!--               <a href="./resources/images/eval_comparison.png"><img src = "./resources/images/eval_comparison.png" height="170px"></img></href></a><br> -->
-          <!--         </center> -->
-          <!--         </td> -->
-          <!--     </tr> -->
-          <!--         <td width=600px> -->
-          <!--           <center> -->
-          <!--               <span style="font-size:14px"><i> <span style="font-weight:bold">Quantitative comparison.</span> </i> -->
-          <!--         </center> -->
-          <!--         </td> -->
-          <!--     </tr> -->
-          <!-- </table> -->
-           <!-- <hr> -->
+            <table align=center width=180px>
+              <tr>
+                <td><span style="font-size:14pt"><center>
+                      <a href="https://arxiv.org/pdf/1712.06584.pdf">[pdf]</a>
+                </center></td>
+		
+                <td><span style="font-size:14pt"><center>
+                      <a href="./resources/bibtex.txt">[Bibtex]</a>
+                </center></td>
+              </tr>
+            </table>
+            <br>
+            <hr>
+            <center><h1>Video</h1></center> 
+            <table align=center width=1000px> 
+              <tr> 
+                <center> 
+		  <!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/bmMV9aJKa-c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe> -->
+		  <iframe width="840" height="472" src="https://www.youtube.com/embed/bmMV9aJKa-c" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+                </center> 
+              </tr> 
+            </table>	       
+	    <br>	  
+	    <hr>
+            <center><h1>Overview</h1></center> 
+            <table align=center width=1000px> 
+              <tr> 
+		<center> 
+		  <img class="round" style="height:300" src="./resources/images/overview.png"/> 
+		</center>
+              <td width=600px>
+		<!-- <center> -->
+		<span style="font-size:14px"><i> <span style="font-weight:bold">Overview
+		      of the proposed framework.</span> An image is passed
+		    through a convolutional encoder and then to an
+		    iterative 3D regression module that infers the
+		    latent 3D representation of the human that
+		    minimizes the joint reprojection error.
+		    The 3D parameters are also sent to the discriminator D, whose goal is to tell if the 3D human is from a real data or not.</i></span>
+		<!-- </center> -->
+              </td>
+              </tr>
+	      <tr>
+	      <td><center> <br> 
+		  <span style="font-size:20px">&nbsp;<a href='https://github.com/akanazawa/hmr'>
+		      Code [coming soon]</a> 
+		    <br> 
+		</center>
+	      </td>
+	      </tr>
+	    </table>
+	    <br>
+	    
+	 <br>
+	 <hr>
+	 <br>
+         <!--   <table align=center width=800px>  -->
+         <!--     <tr><center> <br>  -->
+          <!--       <span style="font-size:14px">&nbsp;<a href='https://github.com/akanazawa/hmr'> -->
+          <!--       Code [coming soon]</a>  -->
+          <!--     <br>  -->
+          <!--     </center></tr>  -->
+          <!-- </table>  -->
+          <!--   <br>  -->
+          <!-- <hr> -->
             <table align=center width=1100px>
                 <tr>
                     <td>
@@ -280,7 +259,9 @@ methods that output 3D meshes and show competitive results on tasks such as 3D j
 			Mehta for his assistance on MPI-INF-3DHP, and Shubham Tulsiani,
 			Abhishek Kar, Saurabh Gupta, David Fouhey and Ziwei Liu for helpful
 			discussions. This research was supported in part by <a href="http://bair.berkeley.edu/">BAIR</a> and NSF Award IIS-1526234.			
-		This webpage template is taken from <a href="https://shubhtuls.github.io/drc/">other 3D objects</a> who borrowed it
+		This webpage template is taken
+			from <a href="https://shubhtuls.github.io/drc/">folks
+			working on 3D objects</a> who borrowed it
 		from some <a href="https://richzhang.github.io/colorization/">colorful folks</a>.
             </left>
         </td>
