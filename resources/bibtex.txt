@@ -1,6 +1,6 @@
-@article{hmrKanazawa17,
+@InProceedings{hmrKanazawa17,
   title={End-to-end Recovery of Human Shape and Pose},
-  author = {Angjoo Kanazawa, Michael J. Black, David W. Jacobs, Jitendra Malik},
-  journal={arXiv},
-  year={2017}
+  author = {Angjoo Kanazawa and Michael J. Black and David W. Jacobs and Jitendra Malik},
+  booktitle={Computer Vision and Pattern Regognition (CVPR)},
+  year={2018}
 }
