@@ -3,4 +3,3 @@ logs*/
 *.json
 *.DS_Store
 *.pyc
-forrelease.sh
