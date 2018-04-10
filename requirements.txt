@@ -10,3 +10,8 @@ deepdish>=0.3
 opencv-python
 absl-py
 ipdb
+opencv-python
+scikit-image
+numpy
+scipy
+opendr
