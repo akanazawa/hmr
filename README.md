@@ -54,8 +54,7 @@ python -m demo --img_path data/random.jpg --json_path data/random_keypoints.json
 (The demo only runs on the most confident bounding box, see `src/util/openpose.py:get_bbox`)
 
 ### Training code/data
-
-Coming soon.
+Please see doc/train.md!
 
 ### Citation
 If you use this code for your research, please consider citing:
