@@ -5,6 +5,8 @@ Defines networks.
 @Encoder_resnet_v1_101
 @Encoder_fc3_dropout
 
+@Discriminator_separable_rotations
+
 Helper:
 @get_encoder_fn_separate
 """
@@ -17,6 +19,7 @@ import tensorflow as tf
 import tensorflow.contrib.slim as slim
 
 from tensorflow.contrib.layers.python.layers.initializers import variance_scaling_initializer
+
 
 def Encoder_resnet(x, is_training=True, weight_decay=0.001, reuse=False):
     """
@@ -47,35 +50,6 @@ def Encoder_resnet(x, is_training=True, weight_decay=0.001, reuse=False):
     variables = tf.contrib.framework.get_variables('resnet_v2_50')
     return net, variables
 
-def Encoder_resnet_v1_101(x,
-                          weight_decay,
-                          is_training=True,
-                          reuse=False):
-    """
-    Resnet v1-101 encoder, adds 2 fc layers after Resnet.
-    Assumes input is [batch, height_in, width_in, channels]!!
-    Input:
-    - x: N x H x W x 3
-    - weight_decay: float
-    - reuse: bool-> True if test
-
-    Outputs:
-    - net: N x F
-    - variables: tf variables
-    """
-    from tensorflow.contrib.slim.python.slim.nets import resnet_v1
-    with tf.name_scope("Encoder_resnet_v1_101", [x]):
-        with slim.arg_scope(
-                resnet_v1.resnet_arg_scope(weight_decay=weight_decay)):
-            net, end_points = resnet_v1.resnet_v1_101(
-                x,
-                num_classes=None,
-                is_training=is_training,
-                reuse=reuse,
-                scope='resnet_v1_101')
-            net = tf.reshape(net, [net.shape.as_list()[0], -1])
-    variables = tf.contrib.framework.get_variables('resnet_v1_101')
-    return net, variables
 
 def Encoder_fc3_dropout(x,
                         num_output=85,
@@ -123,16 +97,83 @@ def get_encoder_fn_separate(model_type):
     """
     encoder_fn = None
     threed_fn = None
-    if 'resnet_v1_101' in model_type:
-        encoder_fn = Encoder_resnet_v1_101
-    elif 'resnet' in model_type:
+    if 'resnet' in model_type:
         encoder_fn = Encoder_resnet
-        
+    else:
+        print('Unknown encoder %s!' % model_type)
+        exit(1)
+
     if 'fc3_dropout' in model_type:
         threed_fn = Encoder_fc3_dropout
-        
+
     if encoder_fn is None or threed_fn is None:
         print('Dont know what encoder to use for %s' % model_type)
-        import ipdb; ipdb.set_trace()
+        import ipdb
+        ipdb.set_trace()
 
     return encoder_fn, threed_fn
+
+
+def Discriminator_separable_rotations(
+        poses,
+        shapes,
+        weight_decay,
+):
+    """
+    23 Discriminators on each joint + 1 for all joints + 1 for shape.
+    To share the params on rotations, this treats the 23 rotation matrices
+    as a "vertical image":
+    Do 1x1 conv, then send off to 23 independent classifiers.
+
+    Input:
+    - poses: N x 23 x 1 x 9, NHWC ALWAYS!!
+    - shapes: N x 10
+    - weight_decay: float
+
+    Outputs:
+    - prediction: N x (1+23) or N x (1+23+1) if do_joint is on.
+    - variables: tf variables
+    """
+    data_format = "NHWC"
+    with tf.name_scope("Discriminator_sep_rotations", [poses, shapes]):
+        with tf.variable_scope("D") as scope:
+            with slim.arg_scope(
+                [slim.conv2d, slim.fully_connected],
+                    weights_regularizer=slim.l2_regularizer(weight_decay)):
+                with slim.arg_scope([slim.conv2d], data_format=data_format):
+                    poses = slim.conv2d(poses, 32, [1, 1], scope='D_conv1')
+                    poses = slim.conv2d(poses, 32, [1, 1], scope='D_conv2')
+                    theta_out = []
+                    for i in range(0, 23):
+                        theta_out.append(
+                            slim.fully_connected(
+                                poses[:, i, :, :],
+                                1,
+                                activation_fn=None,
+                                scope="pose_out_j%d" % i))
+                    theta_out_all = tf.squeeze(tf.stack(theta_out, axis=1))
+
+                    # Do shape on it's own:
+                    shapes = slim.stack(
+                        shapes,
+                        slim.fully_connected, [10, 5],
+                        scope="shape_fc1")
+                    shape_out = slim.fully_connected(
+                        shapes, 1, activation_fn=None, scope="shape_final")
+                    """ Compute joint correlation prior!"""
+                    nz_feat = 1024
+                    poses_all = slim.flatten(poses, scope='vectorize')
+                    poses_all = slim.fully_connected(
+                        poses_all, nz_feat, scope="D_alljoints_fc1")
+                    poses_all = slim.fully_connected(
+                        poses_all, nz_feat, scope="D_alljoints_fc2")
+                    poses_all_out = slim.fully_connected(
+                        poses_all,
+                        1,
+                        activation_fn=None,
+                        scope="D_alljoints_out")
+                    out = tf.concat([theta_out_all,
+                                     poses_all_out, shape_out], 1)
+
+            variables = tf.contrib.framework.get_variables(scope)
+            return out, variables

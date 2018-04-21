@@ -1,4 +1,4 @@
-# python requiremenst
+# python requirements
 pip>=9.0
 scipy
 numpy

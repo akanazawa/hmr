@@ -127,6 +127,8 @@ def main(img_path, json_path=None):
 if __name__ == '__main__':
     config = flags.FLAGS
     config(sys.argv)
+    # Using pre-trained model, change this to use your own.
+    config.load_path = src.config.PRETRAINED_MODEL
 
     config.batch_size = 1
 

@@ -30,7 +30,6 @@ class SMPLRenderer(object):
         self.h = img_size
         self.flength = flength
 
-
     def __call__(self,
                  verts,
                  cam=None,
@@ -84,7 +83,7 @@ class SMPLRenderer(object):
     def rotated(self,
                 verts,
                 deg,
-                cam=None,                
+                cam=None,
                 axis='y',
                 img=None,
                 do_alpha=True,
@@ -311,7 +310,7 @@ def draw_skeleton(input_image, joints, draw_edges=True, vis=None, radius=None):
     image = input_image.copy()
     input_is_float = False
 
-    if isinstance(image, np.float):
+    if np.issubdtype(image.dtype, np.float):
         input_is_float = True
         max_val = image.max()
         if max_val <= 2.:  # should be 1 but sometimes it's slightly above 1
@@ -323,7 +322,11 @@ def draw_skeleton(input_image, joints, draw_edges=True, vis=None, radius=None):
         joints = joints.T
     joints = np.round(joints).astype(int)
 
-    jcolors = ['light_pink', 'light_pink', 'light_pink', 'pink', 'pink', 'pink', 'light_blue', 'light_blue', 'light_blue', 'blue', 'blue', 'blue', 'purple', 'purple', 'red', 'green', 'green', 'white', 'white']
+    jcolors = [
+        'light_pink', 'light_pink', 'light_pink', 'pink', 'pink', 'pink',
+        'light_blue', 'light_blue', 'light_blue', 'blue', 'blue', 'blue',
+        'purple', 'purple', 'red', 'green', 'green', 'white', 'white'
+    ]
 
     if joints.shape[1] == 19:
         # parent indices -1 means no parents
@@ -420,4 +423,31 @@ def draw_skeleton(input_image, joints, draw_edges=True, vis=None, radius=None):
         else:
             image = image.astype(np.float32)
 
+    return image
+
+
+def draw_text(input_image, content):
+    """
+    content is a dict. draws key: val on image
+    Assumes key is str, val is float
+    """
+    import numpy as np
+    import cv2
+    image = input_image.copy()
+    input_is_float = False
+    if np.issubdtype(image.dtype, np.float):
+        input_is_float = True
+        image = (image * 255).astype(np.uint8)
+
+    black = np.array([0, 0, 0])
+    margin = 15
+    start_x = 5
+    start_y = margin
+    for key in sorted(content.keys()):
+        text = "%s: %.2g" % (key, content[key])
+        cv2.putText(image, text, (start_x, start_y), 0, 0.45, black)
+        start_y += margin
+
+    if input_is_float:
+        image = image.astype(np.float32) / 255.
     return image
