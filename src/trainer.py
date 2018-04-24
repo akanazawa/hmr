@@ -285,7 +285,7 @@ class HMRTrainer(object):
                 self.e_loss_3d = loss_3d_params[-1]
                 self.e_loss_3d_joints = loss_3d_joints[-1]
 
-            self.e_loss += (self.e_loss_3d + self.e_loss_3d_joints)
+                self.e_loss += (self.e_loss_3d + self.e_loss_3d_joints)
 
         if not self.encoder_only:
             with tf.name_scope("gather_d_loss"):
