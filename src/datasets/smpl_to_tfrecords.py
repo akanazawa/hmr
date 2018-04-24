@@ -59,8 +59,12 @@ def process_smpl_mocap(all_pkls, out_dir, num_shards, dataset_name):
     for pkl in all_pkls:
         with open(pkl, 'rb') as f:
             res = pickle.load(f)
-            all_poses.append(res['poses'])
-            num_poses_here = res['poses'].shape[0]
+            if 'poses' in res.keys():
+                all_poses.append(res['poses'])
+                num_poses_here = res['poses'].shape[0]
+            else:
+                all_poses.append(res['new_poses'])
+                num_poses_here = res['new_poses'].shape[0]
             all_shapes.append(
                 np.tile(np.reshape(res['betas'], (10, 1)), num_poses_here))
             all_shapes_unique.append(res['betas'])
