@@ -28,13 +28,11 @@ Download these datasets somewhere.
 - [MPII](http://human-pose.mpi-inf.mpg.de/#download)
 - [MPI-INF-3DHP](http://human-pose.mpi-inf.mpg.de/#download)
 
-For Human3.6M, download the pre-computed tfrecords [here](https://drive.google.com/file/d/14RlfDlREouBCNsR1QGDP0qpOUIu5LlV5/view?usp=sharing).
-Note that this is 9.1GB! I advice you do this in a directly outside of the HMR code base.
-```
-wget https://angjookanazawa.com/cachedir/hmr/tf_records_human36m.tar.gz
-```
+For Human3.6M, download the pre-computed tfrecords [here](https://drive.google.com/open?id=1tquavoVWSdGeOn9P6zwoffIMoCRElzEO).
+Note that this is 11GB! I advice you do this in a directly outside of the HMR code base.
 
-If you use these datasets, please consider citing them.
+
+If you use the datasets above, please consider citing their original papers.
 
 ## Mosh Data. 
 We provide the MoShed data using the neutral SMPL model.
