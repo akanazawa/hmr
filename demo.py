@@ -92,9 +92,15 @@ def visualize(img, proc_param, joints, verts, cam):
 
 def preprocess_image(img_path, json_path=None):
     img = io.imread(img_path)
+    if img.shape[2] == 4:
+        img = img[:, :, :3]
 
     if json_path is None:
-        scale = 1.
+        if np.max(img.shape[:2]) != config.img_size:
+            print('Resizing so the max image size is %d..' % config.img_size)
+            scale = (float(config.img_size) / np.max(img.shape[:2]))
+        else:
+            scale = 1.
         center = np.round(np.array(img.shape[:2]) / 2).astype(int)
         # image center in (x,y)
         center = center[::-1]

@@ -44,6 +44,7 @@ python -m demo --img_path data/coco1.png
 python -m demo --img_path data/im1954.jpg
 ```
 
+Images should be tightly cropped, where the height of the person is roughly 150px.
 On images that are not tightly cropped, you can run
 [openpose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) and supply
 its output json (run it with `--write_json` option).
