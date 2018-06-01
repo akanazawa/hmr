@@ -12,31 +12,35 @@ CVPR 2018
 
 ### Installation
 
-#### Setup virtualenv
-```
-virtualenv venv_hmr
-source venv_hmr/bin/activate
-pip install -U pip
-deactivate
-source venv_hmr/bin/activate
-pip install -r requirements.txt
-```
-#### Install TensorFlow
-With GPU:
-```
-pip install tensorflow-gpu==1.3.0
-```
-Without GPU:
-```
-pip install tensorflow==1.3.0
-```
+Install chocolatey:
+https://chocolatey.org/install#installing-chocolatey
 
-### Demo
-
-1. Download the pre-trained models
 ```
+chocolatey wget
+
+# setup virtual environment
+conda create -n hmr3 pip python=3.5
+
+# install tensorflow
+pip install --ignore-installed --upgrade tensorflow-gpu 
+# Download and install CUDA 9.0 from this URL: https://developer.nvidia.com/cuda-toolkit
+
+# clone projects 
+git clone https://github.com/furaga/hmr.git
+cd hmr
+
+# install packages
+pip install -r requirements
+
+# Download the pre-trained models
 wget https://people.eecs.berkeley.edu/~kanazawa/cachedir/hmr/models.tar.gz && tar -xf models.tar.gz
+
 ```
+
+
+
+
+
 
 2. Run the demo
 ```
