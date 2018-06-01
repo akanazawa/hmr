@@ -25,9 +25,9 @@ TESTING:
   'activity_annotation': N_frames x 1 (of integer indicating activity type
   The test images are already in jpg.
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 import numpy as np
 

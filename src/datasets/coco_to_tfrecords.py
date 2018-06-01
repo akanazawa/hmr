@@ -1,8 +1,8 @@
 """ Convert Coco to TFRecords """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 from os.path import join, exists
 from os import makedirs
@@ -56,7 +56,7 @@ def convert_coco2universal(kp):
         7,  # L Elbow
         9,  # L Wrist
     ]
-    UNIVERSAL_HEADS = range(5)
+    UNIVERSAL_HEADS = list(range(5))
     new_kp = np.vstack((kp[UNIVERSAL_BODIES, :], np.zeros((2, 3)),
                         kp[UNIVERSAL_HEADS, :]))
     return new_kp

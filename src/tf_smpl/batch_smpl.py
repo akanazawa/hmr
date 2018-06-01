@@ -6,12 +6,12 @@ Specify joint types:
 Note: To get original smpl joints, use self.J_transformed
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 import numpy as np
-import cPickle as pickle
+import pickle as pickle
 
 import tensorflow as tf
 from .batch_lbs import batch_rodrigues, batch_global_rigid_transformation
@@ -48,7 +48,7 @@ class SMPL(object):
 
         # Regressor for joint locations given shape - 6890 x 24
         self.J_regressor = tf.Variable(
-            dd['J_regressor'].T.todense(),
+            dd['J_regressor'],
             name="J_regressor",
             dtype=dtype,
             trainable=False)
@@ -73,7 +73,7 @@ class SMPL(object):
 
         # This returns 19 keypoints: 6890 x 19
         self.joint_regressor = tf.Variable(
-            dd['cocoplus_regressor'].T.todense(),
+            dd['cocoplus_regressor'],
             name="cocoplus_regressor",
             dtype=dtype,
             trainable=False)

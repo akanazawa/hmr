@@ -1,9 +1,9 @@
 """
 Convert MPII to TFRecords.
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 from os import makedirs
 from os.path import join, exists
@@ -91,7 +91,7 @@ def read_joints(rect):
     # Go over each common joint ids
     joints = np.zeros((3, len(_COMMON_JOINT_IDS)))
     for i, jid in enumerate(_COMMON_JOINT_IDS):
-        if jid in read_points.keys():
+        if jid in list(read_points.keys()):
             joints[:, i] = read_points[jid]
             # If it's annotated, then use it as visible
             # (in this visible = 0 iff no gt label)
@@ -233,7 +233,7 @@ def add_to_tfrecord(anno, img_id, img_dir, coder, writer, is_train):
 
 
 def process_mpii(anno, img_dir, out_dir, num_shards, is_train=True):
-    all_ids = np.array(range(len(anno.annolist)))
+    all_ids = np.array(list(range(len(anno.annolist))))
     if is_train:
         out_path = join(out_dir, 'train_%03d.tfrecord')
         img_inds = all_ids[anno.img_train.astype('bool')]

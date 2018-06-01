@@ -1,7 +1,7 @@
 """ Convert MPI_INF_3DHP to TFRecords """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 from os.path import join, exists
 from os import makedirs
@@ -215,14 +215,14 @@ def process_mpi_inf_3dhp_train(data_dir, out_dir, is_train=False):
     if is_train:
         out_dir = join(out_dir, 'train')
         print('!train set!')
-        sub_ids = range(1, 8)  # No S8!
-        seq_ids = range(1, 3)
+        sub_ids = list(range(1, 8))  # No S8!
+        seq_ids = list(range(1, 3))
         cam_ids = [0, 1, 2, 4, 5, 6, 7, 8]
     else:  # Full set!!
         out_dir = join(out_dir, 'trainval')
         print('doing the full train-val set!')
-        sub_ids = range(1, 9)
-        seq_ids = range(1, 3)
+        sub_ids = list(range(1, 9))
+        seq_ids = list(range(1, 3))
         cam_ids = [0, 1, 2, 4, 5, 6, 7, 8]
 
     if not exists(out_dir):
