@@ -1,15 +1,15 @@
 """
 Convert MoCap SMPL data to tfrecords.
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 from os import makedirs
 from os.path import join, exists
 import numpy as np
 from glob import glob
-import cPickle as pickle
+import pickle as pickle
 
 import tensorflow as tf
 
@@ -59,7 +59,7 @@ def process_smpl_mocap(all_pkls, out_dir, num_shards, dataset_name):
     for pkl in all_pkls:
         with open(pkl, 'rb') as f:
             res = pickle.load(f)
-            if 'poses' in res.keys():
+            if 'poses' in list(res.keys()):
                 all_poses.append(res['poses'])
                 num_poses_here = res['poses'].shape[0]
             else:

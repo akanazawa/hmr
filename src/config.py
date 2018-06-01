@@ -4,9 +4,9 @@ Sets default args
 Note all data format is NHWC because slim resnet wants NHWC.
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 import sys
 from absl import flags
@@ -24,7 +24,7 @@ if not osp.exists(model_dir):
     print('Fix path to models/')
     import ipdb
     ipdb.set_trace()
-SMPL_MODEL_PATH = osp.join(model_dir, 'neutral_smpl_with_cocoplus_reg.pkl')
+SMPL_MODEL_PATH = osp.join(model_dir, 'py3-neutral_smpl_with_cocoplus_reg.pkl')
 SMPL_FACE_PATH = osp.join(curr_path, '../src/tf_smpl', 'smpl_faces.npy')
 
 # Default pred-trained model path for the demo.
@@ -127,7 +127,7 @@ def prepare_dirs(config, prefix=['HMR']):
         ignore_keys = ['load_path', 'log_img_step', 'pretrained_model_path']
         diff_keys = [
             k for k in dict_here
-            if k not in ignore_keys and k in prev_config.keys()
+            if k not in ignore_keys and k in list(prev_config.keys())
             and prev_config[k] != dict_here[k]
         ]
 

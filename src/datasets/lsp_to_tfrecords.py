@@ -3,9 +3,9 @@ Convert LSP/LSP extended to TFRecords.
 In LSP, the first 1000 is training and the last 1000 is test/validation.
 All of LSP extended is training.
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 from os import makedirs
 from os.path import join, exists

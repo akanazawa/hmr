@@ -4,9 +4,9 @@ Util functions implementing the camera
 @@batch_orth_proj_idrot
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 import tensorflow as tf
 

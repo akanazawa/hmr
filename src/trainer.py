@@ -4,9 +4,9 @@ From an image input, trained a model that outputs 85D latent vector
 consisting of [cam (3 - [scale, tx, ty]), pose (72), shape (10)]
 """
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 from .data_loader import num_examples
 
@@ -484,7 +484,7 @@ class HMRTrainer(object):
         return combined
 
     def draw_results(self, result):
-        from StringIO import StringIO
+        from io import StringIO
         import matplotlib.pyplot as plt
 
         # This is B x H x W x 3

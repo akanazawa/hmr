@@ -15,12 +15,13 @@ python -m demo --img_path data/coco1.png
 # On images, with openpose output
 python -m demo --img_path data/random.jpg --json_path data/random_keypoints.json
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+
+
+
 
 import sys
 from absl import flags
+import cv2
 import numpy as np
 
 import skimage.io as io
@@ -47,47 +48,51 @@ def visualize(img, proc_param, joints, verts, cam):
 
     # Render results
     skel_img = vis_util.draw_skeleton(img, joints_orig)
-    rend_img_overlay = renderer(
-        vert_shifted, cam=cam_for_render, img=img, do_alpha=True)
-    rend_img = renderer(
-        vert_shifted, cam=cam_for_render, img_size=img.shape[:2])
-    rend_img_vp1 = renderer.rotated(
-        vert_shifted, 60, cam=cam_for_render, img_size=img.shape[:2])
-    rend_img_vp2 = renderer.rotated(
-        vert_shifted, -60, cam=cam_for_render, img_size=img.shape[:2])
+    cv2.imshow("demo", skel_img)
+    
+    cv2.waitKey(0)
 
-    import matplotlib.pyplot as plt
-    # plt.ion()
-    plt.figure(1)
-    plt.clf()
-    plt.subplot(231)
-    plt.imshow(img)
-    plt.title('input')
-    plt.axis('off')
-    plt.subplot(232)
-    plt.imshow(skel_img)
-    plt.title('joint projection')
-    plt.axis('off')
-    plt.subplot(233)
-    plt.imshow(rend_img_overlay)
-    plt.title('3D Mesh overlay')
-    plt.axis('off')
-    plt.subplot(234)
-    plt.imshow(rend_img)
-    plt.title('3D mesh')
-    plt.axis('off')
-    plt.subplot(235)
-    plt.imshow(rend_img_vp1)
-    plt.title('diff vp')
-    plt.axis('off')
-    plt.subplot(236)
-    plt.imshow(rend_img_vp2)
-    plt.title('diff vp')
-    plt.axis('off')
-    plt.draw()
-    plt.show()
-    # import ipdb
-    # ipdb.set_trace()
+    # rend_img_overlay = renderer(
+    #     vert_shifted, cam=cam_for_render, img=img, do_alpha=True)
+    # rend_img = renderer(
+    #     vert_shifted, cam=cam_for_render, img_size=img.shape[:2])
+    # rend_img_vp1 = renderer.rotated(
+    #     vert_shifted, 60, cam=cam_for_render, img_size=img.shape[:2])
+    # rend_img_vp2 = renderer.rotated(
+    #     vert_shifted, -60, cam=cam_for_render, img_size=img.shape[:2])
+
+    # import matplotlib.pyplot as plt
+    # # plt.ion()
+    # plt.figure(1)
+    # plt.clf()
+    # plt.subplot(231)
+    # plt.imshow(img)
+    # plt.title('input')
+    # plt.axis('off')
+    # plt.subplot(232)
+    # plt.imshow(skel_img)
+    # plt.title('joint projection')
+    # plt.axis('off')
+    # plt.subplot(233)
+    # plt.imshow(rend_img_overlay)
+    # plt.title('3D Mesh overlay')
+    # plt.axis('off')
+    # plt.subplot(234)
+    # plt.imshow(rend_img)
+    # plt.title('3D mesh')
+    # plt.axis('off')
+    # plt.subplot(235)
+    # plt.imshow(rend_img_vp1)
+    # plt.title('diff vp')
+    # plt.axis('off')
+    # plt.subplot(236)
+    # plt.imshow(rend_img_vp2)
+    # plt.title('diff vp')
+    # plt.axis('off')
+    # plt.draw()
+    # plt.show()
+    # # import ipdb
+    # # ipdb.set_trace()
 
 
 def preprocess_image(img_path, json_path=None):
@@ -97,7 +102,7 @@ def preprocess_image(img_path, json_path=None):
 
     if json_path is None:
         if np.max(img.shape[:2]) != config.img_size:
-            print('Resizing so the max image size is %d..' % config.img_size)
+            print(('Resizing so the max image size is %d..' % config.img_size))
             scale = (float(config.img_size) / np.max(img.shape[:2]))
         else:
             scale = 1.
@@ -138,6 +143,6 @@ if __name__ == '__main__':
 
     config.batch_size = 1
 
-    renderer = vis_util.SMPLRenderer(face_path=config.smpl_face_path)
+    # renderer = vis_util.SMPLRenderer(face_path=config.smpl_face_path)
 
     main(config.img_path, config.json_path)
