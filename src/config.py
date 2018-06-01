@@ -24,7 +24,7 @@ if not osp.exists(model_dir):
     print('Fix path to models/')
     import ipdb
     ipdb.set_trace()
-SMPL_MODEL_PATH = osp.join(model_dir, 'neutral_smpl_with_cocoplus_reg.pkl')
+SMPL_MODEL_PATH = osp.join(model_dir, 'py3-neutral_smpl_with_cocoplus_reg.pkl')
 SMPL_FACE_PATH = osp.join(curr_path, '../src/tf_smpl', 'smpl_faces.npy')
 
 # Default pred-trained model path for the demo.

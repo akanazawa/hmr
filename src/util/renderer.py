@@ -9,10 +9,6 @@ from __future__ import print_function
 import numpy as np
 import cv2
 
-from opendr.camera import ProjectPoints
-from opendr.renderer import ColoredRenderer
-from opendr.lighting import LambertianPointLight
-
 colors = {
     # colorbline/print/copy safe:
     'light_blue': [0.65098039, 0.74117647, 0.85882353],

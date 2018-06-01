@@ -27,11 +27,11 @@ import numpy as np
 import skimage.io as io
 import tensorflow as tf
 
-from .src.util import renderer as vis_util
-from .src.util import image as img_util
-from .src.util import openpose as op_util
-from . import src.config
-from .src.RunModel import RunModel
+from src.util import renderer as vis_util
+from src.util import image as img_util
+from src.util import openpose as op_util
+import src.config
+from src.RunModel import RunModel
 
 flags.DEFINE_string('img_path', 'data/im1963.jpg', 'Image to run')
 flags.DEFINE_string(
