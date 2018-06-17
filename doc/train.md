@@ -105,3 +105,28 @@ Setup tensorboard to this directory to monitor the training progress like so:
 It's important to visually monitor the training! Make sure that the images
 loaded look right.
 
+
+## Evaluation
+Provided is an evaluation code for Human3.6M. It uses the test tf_records,
+provided with the training tf_records available above and [here (11GB)](https://drive.google.com/open?id=1tquavoVWSdGeOn9P6zwoffIMoCRElzEO).
+
+To evaluate a model, run
+```
+python -m src.benchmark.evaluate_h36m --batch_size=500
+--load_path=<model_to_eval.ckpt> --tfh36m_dir <path to tf_records_human36m_wjoints/>
+```
+for example for the provided model, use:
+```
+python -m src.benchmark.evaluate_h36m --batch_size=500
+--load_path=models/model.ckpt-667589 --tfh36m_dir <path to tf_records_human36m_wjoints/>
+```
+
+This writes intermediate output to a temp directory, which you can specify by pred_dir
+With the provided model, this outputs errors per action and overall MPE for P1
+(corresponding to Table 2 in paper -- this retrained model gets slightly lower
+MPJPE and a comparable PA-MPJPE):
+```
+MPJPE: 86.20, PA-MPJPE: 58.47, Median: 79.47, PA-Median: 52.95
+```
+
+Run it with `--vis` option, it visualizes the top/worst 30 results. 

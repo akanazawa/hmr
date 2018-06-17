@@ -87,7 +87,7 @@ class RunModel(object):
         self.all_cams = []
         self.all_Js = []
         self.final_thetas = []
-        theta_prev = self.mean_var
+        theta_prev = tf.tile(self.mean_var, [self.batch_size, 1])
         for i in np.arange(self.num_stage):
             print('Iteration %d' % i)
             # ---- Compute outputs

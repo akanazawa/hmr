@@ -227,3 +227,82 @@ def resize_img(img, scale_factor):
         new_size[0] / float(img.shape[0]), new_size[1] / float(img.shape[1])
     ]
     return new_img, actual_factor
+
+
+def read_images_from_tfrecords(tf_path, img_size=224, sess=None):
+    """
+    Returns image, kp, and gt3d from the tf_paths
+
+    This returns a preprocessed image, cropped around img_size.
+    """
+    from time import time
+    from os.path import exists
+    if not exists(tf_path):
+        print('%s doesnt exist!' % tf_path)
+        exit(1)
+
+    if sess is None:
+        sess = tf.Session()
+
+    t0 = time()
+    all_images, all_kps, all_gt3ds = [], [], []
+
+    itr = 0
+
+    # Decode op graph
+    image_data_pl = tf.placeholder(dtype=tf.string)
+    decode_op = tf.image.decode_jpeg(image_data_pl)
+
+    for serialized_ex in tf.python_io.tf_record_iterator(tf_path):
+        example = tf.train.Example()
+        example.ParseFromString(serialized_ex)
+        image_data = example.features.feature['image/encoded'].bytes_list.value[0]
+        image = sess.run(decode_op, feed_dict={image_data_pl:  image_data})
+
+        x = example.features.feature['image/x'].float_list.value
+        y = example.features.feature['image/y'].float_list.value
+        vis = example.features.feature['image/visibility'].int64_list.value
+        center = example.features.feature['image/center'].int64_list.value
+
+        x = np.array(x)
+        y = np.array(y)
+        vis = np.array(vis, dtype='bool')
+        center = np.array(center)
+
+        # Crop img_size.
+        # Pad in case.
+        margin = int(img_size/2)
+        image_pad = np.pad(image, ((margin,), (margin,), (0,)), mode='edge')
+
+        # figure out starting point
+        start_pt = center
+        end_pt = center + 2*margin
+
+        x_crop = x + margin - start_pt[0]
+        y_crop = y + margin - start_pt[1]
+        kp_crop = np.vstack([x_crop, y_crop])
+        kp_final = 2 * (kp_crop / img_size) - 1
+        kp_final = np.vstack((vis * kp_final, vis)).T
+        # crop:
+        crop = image_pad[start_pt[1]:end_pt[1], start_pt[0]:end_pt[0], :]
+        
+        # Normalize image to [-1, 1]
+        crop = 2 * ((crop / 255.) - 0.5)
+
+        # Note: This says mosh but gt3d is the gt H3.6M joints & not from mosh.
+        gt3d = example.features.feature['mosh/gt3d'].float_list.value
+        gt3d = np.array(gt3d).reshape(-1, 3)
+
+        all_images.append(crop)
+        all_kps.append(kp_final)
+        all_gt3ds.append(gt3d)
+
+        itr += 1
+
+    images = np.stack(all_images)
+    kps = np.stack(all_kps)
+    gt3ds = np.stack(all_gt3ds)
+
+    print('Read %d images, %g secs' % (images.shape[0], time()-t0))
+
+    return images, kps, gt3ds

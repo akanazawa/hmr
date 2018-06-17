@@ -22,7 +22,7 @@ colors = {
 
 class SMPLRenderer(object):
     def __init__(self,
-                 img_size=256,
+                 img_size=224,
                  flength=500.,
                  face_path="tf_smpl/smpl_faces.npy"):
         self.faces = np.load(face_path)
