@@ -212,6 +212,7 @@ class HMRTrainer(object):
         # For discriminator
         fake_rotations, fake_shapes = [], []
         # Start loop
+        # 85D
         theta_prev = self.load_mean_param()
 
         # For visualizations
@@ -221,6 +222,7 @@ class HMRTrainer(object):
         self.all_delta_thetas = []
         self.all_theta_prev = []
 
+        # Main IEF loop
         for i in np.arange(self.num_stage):
             print('Iteration %d' % i)
             # ---- Compute outputs
