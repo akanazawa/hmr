@@ -4,11 +4,16 @@
 <style type="text/css">
     body {
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        font-weight:300;
-        font-size:18px;
+        font-weight:400;
+        font-size:16px;
         margin-left: auto;
         margin-right: auto;
-        width: 1100px;
+        <!-- width: 1100px; -->
+    }
+    table{width:80%}
+    .content{
+       margin:auto;
+    width: 80%
     }
 
     h1 {
@@ -96,13 +101,15 @@
   <body>
     <br>
     <center>
-      <span style="font-size:42px">End-to-end Recovery of Human Shape and Pose
-	</span>
+      <span style="font-size:30px">End-to-end Recovery of Human Shape and Pose
+      </span>
+<br><br>    <span style="font-size:20px">CVPR 2018</span>      
     </center>
 
-    <br><br>
-      <table align=center width=900px>
-       <tr>
+
+    <br>
+    <table align=center width=900px>
+	<tr>
         <td align=center width=100px>
         <center>
         <span style="font-size:20px"><a href="http://www.cs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a></span>
@@ -131,28 +138,30 @@
      </tr>
     </table>
 
-    <br>
+    <!-- <br> -->
     <table align=center width=700px>
        <tr>
         <td align=center width=100px>
-        <center>
-          <span style="font-size:20px">University of California, Berkeley</span><br>
-<span style="font-size:20px">MPI for Intelligent Systems, T&uumlbingen, Germany<br> University of Maryland, College Park
+          <center>
+          <span style="font-size:19px">University of California, Berkeley</span><br>
+<span style="font-size:19px">MPI for Intelligent Systems, T&uumlbingen, Germany<br> University of Maryland, College Park
 </span></center>
         </td>
      </tr>
     </table>
 
             <br>
-            <table align=center width=900px>
+            <table align=center style="width:80%">
                 <tr>
-                    <td width=600px>
+                  <!-- <td width=600px> -->
+		    <td>
                       <center>
                           <a href="./resources/images/teaser.png"><img src = "./resources/images/teaser.png" height="400px"></img></href></a><br>
                     </center>
                     </td>
                 </tr>
-                    <td width=600px>
+<!-- <td width=600px> -->
+<td>  
                       <!-- <center> -->
                           <span style="font-size:14px"><i> <span style="font-weight:bold">Human
                           Mesh Recovery (HMR): End-to-end adversarial learning of human pose and shape.</span> We present a real time framework for recovering the 3D joint angles and shape of the body from a single RGB image. Bottom row shows results from a model trained without using any coupled 2D-to-3D supervision. We infer the full 3D body even in case of occlusions and truncations. Note that we capture head and limb orientations.</i>
@@ -160,14 +169,16 @@
                     </td>
                 </tr>
             </table>
-
+<!-- <hr class = "divider"> -->
+<div class='content'>
             <br>
 	    We present Human Mesh Recovery (HMR), an end-to-end framework for reconstructing a full
 	    3D mesh of a human body from a single RGB image. 
 	    In contrast to most current methods that compute 2D or 3D joint
 	    locations, we produce a richer and more useful mesh representation that is
 	    parameterized by shape and 3D joint angles. The main objective is to minimize
-	    the reprojection loss of keypoints, which allow our model to be trained using \emph{in-the-wild} images that only have
+	    the reprojection loss of keypoints, which allow our model to be
+	    trained using images <i>in-the-wild</i> that only have
 	    ground truth 2D annotations.
 	    However, reprojection loss alone is highly under constrained.
 	    In this work we address this problem by introducing an adversary trained to
@@ -177,7 +188,9 @@
 	    keypoint detection and infer 3D pose and shape parameters directly
 	    from image pixels. Our model runs in real-time given a bounding box
 	    containing the person.  We demonstrate our approach on various images <i>in-the-wild</i> and out-perform previous optimization-based
-	    methods that output 3D meshes and show competitive results on tasks such as 3D joint location estimation and part segmentation.
+	    methods that output 3D meshes and show competitive results on tasks
+	    such as 3D joint location estimation and part segmentation.
+	    </div>
             <br><br>
             <hr>
             <table align=center width=650>
@@ -187,21 +200,35 @@
                 <td style="padding:1em"><span style="font-size:14pt">Angjoo Kanazawa, Michael
                     J. Black, David W. Jacobs, Jitendra Malik.<br><br>
                     End-to-end Recovery of Human Shape and Pose<br><br>
-                    arXiv, Dec 2017.<br> </span>
+                    CVPR 2018.<br> </span>
                 </td>
               </tr>
             </table>
             <br>
 
-            <table align=center width=180px>
+            <table align=center width=500px>
               <tr>
-                <td><span style="font-size:14pt"><center>
+		<span style="font-size:14pt">
+		  <center>
                       <a href="https://arxiv.org/pdf/1712.06584.pdf">[pdf]</a>
-                </center></td>
+                      <a href="./resources/bibtex.txt">[bibtex]</a>
+		      <a href="https://github.com/akanazawa/hmr">[code, model and data!]</a>
+                    </center>
+		</span>				  		  
+                <!-- <td> -->
+		<!--   <span style="font-size:14pt"><center> -->
+                <!--       <a href="https://arxiv.org/pdf/1712.06584.pdf">[pdf]</a> -->
+                <!--     </center> -->
+		<!--     </span> -->
+		<!-- </td> -->
 		
-                <td><span style="font-size:14pt"><center>
-                      <a href="./resources/bibtex.txt">[Bibtex]</a>
-                </center></td>
+                <!-- <td><span style="font-size:14pt"><center> -->
+                <!--       <a href="./resources/bibtex.txt">[Bibtex]</a> -->
+                <!-- </center></td> -->
+                <!-- <td><span style="font-size:14pt"><center> -->
+                <!--       <a href="https://github.com/akanazawa/hmr">[Code, model and data!]</a> -->
+                <!-- </center></td> -->
+
               </tr>
             </table>
             <br>
@@ -223,7 +250,8 @@
 		<center> 
 		  <img class="round" style="height:300" src="./resources/images/overview.png"/> 
 		</center>
-              <td width=600px>
+		<div class='content'>
+              <!-- <td width=600px> -->
 		<!-- <center> -->
 		<span style="font-size:14px"><i> <span style="font-weight:bold">Overview
 		      of the proposed framework.</span> An image is passed
@@ -233,17 +261,19 @@
 		    minimizes the joint reprojection error.
 		    The 3D parameters are also sent to the discriminator D, whose goal is to tell if the 3D human is from a real data or not.</i></span>
 		<!-- </center> -->
-              </td>
+		<!-- </td> -->
+		</div>
               </tr>
 	      <tr>
 	      <td><center> <br> 
-		  <span style="font-size:20px">&nbsp;<a href='https://github.com/akanazawa/hmr'>Code</a> </span>
+		  <span style="font-size:20px"><a href='https://github.com/akanazawa/hmr'>Code</a> </span>
 		  <br> 
 		</center>
 	      </td>
 	      </tr>
 	    </table>
 	    <br>
+	    <div class='content'>
 		We present an end-to-end framework for recovering a full 3D mesh
 		of a human body from a single RGB image. We use the generative
 		human body model <a href="http://smpl.is.tue.mpg.de/">SMPL</a>,
@@ -312,14 +342,46 @@
 	    possibilities for learning 3D from large amounts of 2D data.
 	    <br>
 	    <br>
-	    Please see the <a href="https://arxiv.org/pdf/1712.06584.pdf">paper</a> for more details.
+	    Please see
+	    the <a href="https://arxiv.org/pdf/1712.06584.pdf">paper</a> for
+	    more details.
+	    </div>
 	    <hr>
-	 <br>
-            <table align=center width=1100px>
-                <tr>
-                    <td>
-                      <left>
-			<center><h1>Acknowledgements</h1></center>
+	    <div class='content'>
+	      <h3>Concurrent Work</h3>
+	      Concurrently and independently from us, a number of groups have
+	      proposed closely related deep learning based approaches for recovering SMPL. Many have a
+	      similar emphasis on resolving the lack of ground truth 3D issue
+	      in interesting and
+	      different ways! Here is a partial list:
+	      <ul>
+		<li>Hsiao-Yu Fish Tung,  Hsiao-Wei Tung,  Ersin Yumer,  Katerina
+		Fragkiadaki,
+		NIPS'17. <a href="https://sites.google.com/view/selfsupervisedlearningofmotion/">Self-supervised
+		    Learning of Motion Capture</a></li>
+		<li>Jun Kai Vince Tan, Ignas Budvytis, Roberto Cipolla, BMVC'17. <a href="http://mi.eng.cam.ac.uk/~cipolla/publications/inproceedings/2017-BMVC-3D-body-indirect.pdf ">Indirect deep structured learning for 3D human body shape and pose prediction</a></li>
+		<li>Georgios Pavlakos, Luyang Zhu, Xiaowei Zhou, Kostas Daniilidis, CVPR'18. <a href="https://www.seas.upenn.edu/~pavlakos/projects/humanshape/">Learning to Estimate 3D Human Pose and Shape from a Single Color Image</a></li>
+		<li>Gül Varol, Duygu Ceylan, Bryan Russell, Jimei Yang, Ersin Yumer, Ivan Laptev,
+and Cordelia Schmid, ECCV'18. <a href="https://www.di.ens.fr/willow/research/bodynet/">BodyNet: Volumetric Inference of 3D Human Body Shapes</a></li>
+		<li> Mohamed Omran, Christop Lassner, Gerard Pons-Moll, Peter
+		Gehler, Bernt Schiele, 3DV'18. <a href="http://virtualhumans.mpi-inf.mpg.de/papers/omran2018NBF/omran2018NBF.pdf">Neural Body Fitting: Unifying Deep Learning and Model Based Human Pose and Shape Estimation</a></li>
+	      </ul>
+
+	      SMPL models recovered by any of these approaches could be
+	      improved by using it as an initialization for our optimization
+	      based approach SMPLify proposed in ECCV
+	      2016:
+	      <ul>
+		Federica Bogo*, Angjoo Kanazawa*, Christoph Lassner, Peter
+	      Gehler, Javier Romero, Michael Black, ECCV 2016. <a href="http://smplify.is.tue.mpg.de">Keep it SMPL: Automatic
+	      Estimation of 3D Human Pose and Shape from a Single Image</a>. 		
+		</ul>
+	    </div>
+	    <hr>
+	 <!-- <br> -->
+			<!-- <center><h1>Acknowledgements</h1></center> -->
+			<div class='content'>
+			  <h3>Acknowledgements</h3>
 			We thank Naureen Mahmood for providing MoShed
 			datasets and  mesh retargeting for character animation, Dushyant
 			Mehta for his assistance on MPI-INF-3DHP, and Shubham Tulsiani,
@@ -329,10 +391,8 @@
 			from <a href="https://shubhtuls.github.io/drc/">humans
 			working on 3D</a> who borrowed it
 		from some <a href="https://richzhang.github.io/colorization/">colorful folks</a>.
-            </left>
-        </td>
-        </tr>
-        </table>
+		      </left>
+		     </div>
 
         <br><br>
 </body>
