@@ -70,3 +70,10 @@ If you use this code for your research, please consider citing:
   year={2018}
 }
 ```
+
+### Opensource contributions
+[Dawars](https://github.com/Dawars) has created a docker image for this project: https://hub.docker.com/r/dawars/hmr/
+
+[MandyMo](https://github.com/MandyMo) has implemented a pytorch version of the repo: https://github.com/MandyMo/pytorch_HMR.git
+
+I have not tested them, but I appreciate the contribution! Thank you!!
