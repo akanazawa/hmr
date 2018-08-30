@@ -164,7 +164,7 @@ def parse_people(anno_info, single_persons):
                     # Skip, person is too close.
                     continue
 
-            people.append((joints, scale, pos))
+        people.append((joints, scale, pos))
 
     return people
 
