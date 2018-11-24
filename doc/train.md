@@ -26,7 +26,7 @@ Download these datasets somewhere.
 - [COCO](http://cocodataset.org/#download) we used 2014 Train. You also need to
   install the [COCO API](https://github.com/cocodataset/cocoapi) for python.
 - [MPII](http://human-pose.mpi-inf.mpg.de/#download)
-- [MPI-INF-3DHP](http://human-pose.mpi-inf.mpg.de/#download)
+- [MPI-INF-3DHP](http://gvv.mpi-inf.mpg.de/3dhp-dataset/)
 
 For Human3.6M, download the pre-computed tfrecords [here](https://drive.google.com/open?id=1tquavoVWSdGeOn9P6zwoffIMoCRElzEO).
 Note that this is 11GB! I advice you do this in a directly outside of the HMR code base.
