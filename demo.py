@@ -124,6 +124,10 @@ def main(img_path, json_path=None):
     # Add batch dimension: 1 x D x D x 3
     input_img = np.expand_dims(input_img, 0)
 
+    # Theta is the 85D vector holding [camera, pose, shape]
+    # where camera is 3D [s, tx, ty]
+    # pose is 72D vector holding the rotation of 24 joints of SMPL in axis angle format
+    # shape is 10D shape coefficients of SMPL
     joints, verts, cams, joints3d, theta = model.predict(
         input_img, get_theta=True)
 
