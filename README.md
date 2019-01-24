@@ -8,7 +8,7 @@ CVPR 2018
 
 ### Requirements
 - Python 2.7
-- [TensorFlow](https://www.tensorflow.org/) tested on version 1.3
+- [TensorFlow](https://www.tensorflow.org/) tested on version 1.3, demo alone runs with TF 1.12
 
 ### Installation
 
