@@ -28,8 +28,11 @@ Download these datasets somewhere.
 - [MPII](http://human-pose.mpi-inf.mpg.de/#download)
 - [MPI-INF-3DHP](http://gvv.mpi-inf.mpg.de/3dhp-dataset/)
 
-For Human3.6M, download the pre-computed tfrecords [here](https://drive.google.com/open?id=1tquavoVWSdGeOn9P6zwoffIMoCRElzEO).
-Note that this is 11GB! I advice you do this in a directly outside of the HMR code base.
+~For Human3.6M, download the pre-computed tfrecords [here]().
+Note that this is 11GB! I advice you do this in a directly outside of the HMR code base.~
+_As of April 4th 2019, we do not make pre-computed tfrecords available for
+Human3.6M due to the request from the authors of Human3.6M. Please download the
+dataset directly from their website._
 
 
 If you use the datasets above, please consider citing their original papers.
