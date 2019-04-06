@@ -111,7 +111,10 @@ loaded look right.
 
 ## Evaluation
 Provided is an evaluation code for Human3.6M. It uses the test tf_records,
-provided with the training tf_records available above and [here (11GB)](https://drive.google.com/open?id=1tquavoVWSdGeOn9P6zwoffIMoCRElzEO).
+provided with the training tf_records available above and ~[here]~ 
+_As of April 4th 2019, we do not make pre-computed tfrecords available for
+Human3.6M due to the request from the authors of Human3.6M. Please download the
+dataset directly from their website._
 
 To evaluate a model, run
 ```
