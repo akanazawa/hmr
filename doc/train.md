@@ -31,11 +31,11 @@ Download these datasets somewhere.
 ~For Human3.6M, download the pre-computed tfrecords [here]().
 Note that this is 11GB! I advice you do this in a directly outside of the HMR code base.~
 _As of April 4th 2019, we do not make pre-computed tfrecords available for
-Human3.6M due to the request from the authors of Human3.6M. Please download the
-dataset directly from their website._
+Human3.6M following their license agreement. Please download the
+dataset directly from [their website](http://vision.imar.ro/human3.6m/description.php) and follow their [license agreement](http://vision.imar.ro/human3.6m/eula.php)._
 
 
-If you use the datasets above, please cite the original papers and follow their license.
+If you use the datasets above, please cite the original papers and follow the individual license agreement.
 
 ## Mosh Data. 
 We provide the MoShed data using the neutral SMPL model.
