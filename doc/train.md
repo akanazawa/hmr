@@ -35,7 +35,7 @@ Human3.6M due to the request from the authors of Human3.6M. Please download the
 dataset directly from their website._
 
 
-If you use the datasets above, please consider citing their original papers.
+If you use the datasets above, please cite the original papers and follow their license.
 
 ## Mosh Data. 
 We provide the MoShed data using the neutral SMPL model.
