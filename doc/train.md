@@ -27,11 +27,11 @@ Download these datasets somewhere.
   install the [COCO API](https://github.com/cocodataset/cocoapi) for python.
 - [MPII](http://human-pose.mpi-inf.mpg.de/#download)
 - [MPI-INF-3DHP](http://gvv.mpi-inf.mpg.de/3dhp-dataset/)
+- [Human3.6M](http://vision.imar.ro/human3.6m/description.php)
 
 ~For Human3.6M, download the pre-computed tfrecords [here]().
 Note that this is 11GB! I advice you do this in a directly outside of the HMR code base.~
-_As of April 4th 2019, we do not make pre-computed tfrecords available for
-Human3.6M following their license agreement. Please download the
+_The distribution of pre-computed Human3.6M tfrecord ended as of April 4th 2019, following their license agreement. The distribution of the data was not permitted at any time by the license or by the copyright holders. If you have obtained the data through our link prior to this date, please note that you must follow the original [license agreement](http://vision.imar.ro/human3.6m/eula.php). Please download the
 dataset directly from [their website](http://vision.imar.ro/human3.6m/description.php) and follow their [license agreement](http://vision.imar.ro/human3.6m/eula.php)._
 
 
