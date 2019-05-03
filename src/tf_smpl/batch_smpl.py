@@ -11,7 +11,7 @@ from __future__ import division
 from __future__ import print_function
 
 import numpy as np
-import cPickle as pickle
+import pickle as pickle
 
 import tensorflow as tf
 from .batch_lbs import batch_rodrigues, batch_global_rigid_transformation
@@ -28,8 +28,8 @@ class SMPL(object):
         pkl_path is the path to a SMPL model
         """
         # -- Load SMPL params --
-        with open(pkl_path, 'r') as f:
-            dd = pickle.load(f)    
+        with open(pkl_path, 'rb') as f:
+            dd = pickle.load(f, encoding="latin-1") 
         # Mean template vertices
         self.v_template = tf.Variable(
             undo_chumpy(dd['v_template']),
