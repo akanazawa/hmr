@@ -63,7 +63,7 @@ python -m demo --img_path data/random.jpg --json_path data/random_keypoints.json
 ```
 (The demo only runs on the most confident bounding box, see `src/util/openpose.py:get_bbox`)
 
-### Webcam Demo
+### Webcam Demo (thanks @JulesDoe!)
 1. Download pre-trained models like above.
 2. Run webcam Demo
 2. Run the demo
