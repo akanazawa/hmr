@@ -12,7 +12,7 @@ CVPR 2018
 
 ### Installation
 
-#### Setup virtualenv
+#### Linux Setup with virtualenv
 ```
 virtualenv venv_hmr
 source venv_hmr/bin/activate
@@ -30,6 +30,15 @@ Without GPU:
 ```
 pip install tensorflow==1.3.0
 ```
+
+### Windows Setup with python 3 and Anaconda
+This is only partialy tested.
+```
+conda env create -f hmr.yml
+```
+#### if you need to get chumpy 
+https://github.com/mattloper/chumpy/tree/db6eaf8c93eb5ae571eb054575fb6ecec62fd86d
+
 
 ### Demo
 
@@ -53,6 +62,15 @@ When json_path is specified, the demo will compute the right scale and bbox cent
 python -m demo --img_path data/random.jpg --json_path data/random_keypoints.json
 ```
 (The demo only runs on the most confident bounding box, see `src/util/openpose.py:get_bbox`)
+
+### Webcam Demo
+1. Download pre-trained models like above.
+2. Run webcam Demo
+2. Run the demo
+```
+python -m demo --img_path data/coco1.png
+python -m demo --img_path data/im1954.jpg
+```
 
 ### Training code/data
 Please see the [doc/train.md](https://github.com/akanazawa/hmr/blob/master/doc/train.md)!
