@@ -2,7 +2,7 @@
 pip>=9.0
 scipy
 numpy
-opendr
+opendr==0.77
 matplotlib
 scikit-image
 deepdish>=0.3
