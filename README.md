@@ -84,7 +84,7 @@ If you use this code for your research, please consider citing:
   and Michael J. Black
   and David W. Jacobs
   and Jitendra Malik},
-  booktitle={Computer Vision and Pattern Regognition (CVPR)},
+  booktitle={Computer Vision and Pattern Recognition (CVPR)},
   year={2018}
 }
 ```
