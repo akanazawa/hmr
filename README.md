@@ -90,6 +90,8 @@ If you use this code for your research, please consider citing:
 ```
 
 ### Opensource contributions
+[russoale](https://github.com/russoale/) has created a Python 3 version with TF 2.0: https://github.com/russoale/hmr2.0
+
 [Dawars](https://github.com/Dawars) has created a docker image for this project: https://hub.docker.com/r/dawars/hmr/
 
 [MandyMo](https://github.com/MandyMo) has implemented a pytorch version of the repo: https://github.com/MandyMo/pytorch_HMR.git
