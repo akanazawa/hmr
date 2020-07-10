@@ -63,6 +63,19 @@ python -m demo --img_path data/random.jpg --json_path data/random_keypoints.json
 ```
 (The demo only runs on the most confident bounding box, see `src/util/openpose.py:get_bbox`)
 
+### Batch Demo
+Author [Lotayou](github.com/Lotayou)
+
+To run the demo on batch images, do 
+```
+python -m demo_batch --img_path data/small --json_path data/small_keypoints_18 --result_path results
+```
+
+For more details, please check `demo_batch.py`. 
+
+__Note__: Make sure image filename and json filename come in pairs, like `img.png` and `img_keypoints.json`.
+
+
 ### Webcam Demo (thanks @JulesDoe!)
 1. Download pre-trained models like above.
 2. Run webcam Demo

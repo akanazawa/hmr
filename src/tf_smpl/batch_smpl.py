@@ -29,7 +29,8 @@ class SMPL(object):
         """
         # -- Load SMPL params --
         with open(pkl_path, 'rb') as f:
-            dd = pickle.load(f, encoding="latin-1") 
+            #dd = pickle.load(f, encoding="latin1") 
+            dd = pickle.load(f)
         # Mean template vertices
         self.v_template = tf.Variable(
             undo_chumpy(dd['v_template']),
