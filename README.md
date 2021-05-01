@@ -104,4 +104,57 @@ https://github.com/Dene33/video_to_bvh
 
 I have not tested them, but the contributions are super cool! Thank you!!
 
+# Trying to Run it on COlab page:
+
+I have made [this colab page](https://colab.research.google.com/github/soheilpaper/-tft-2.4-ili9341-STM32/blob/master/3D_pose_Estimation/Demo_MeshRCNN.ipynb) and get these bugs:
+```
+for some common reasons and solutions.  Include the entire stack trace
+above this error message when asking for help.
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/runpy.py", line 174, in _run_module_as_main
+    "__main__", fname, loader, pkg_name)
+  File "/usr/lib/python2.7/runpy.py", line 72, in _run_code
+    exec code in run_globals
+  File "/content/hmr/demo.py", line 27, in <module>
+    import tensorflow as tf
+  File "/tensorflow-1.15.2/python3.7/tensorflow/__init__.py", line 99, in <module>
+    from tensorflow_core import *
+  File "/tensorflow-1.15.2/python3.7/tensorflow_core/__init__.py", line 28, in <module>
+    from tensorflow.python import pywrap_tensorflow  # pylint: disable=unused-import
+  File "/tensorflow-1.15.2/python3.7/tensorflow/__init__.py", line 50, in __getattr__
+    module = self._load()
+  File "/tensorflow-1.15.2/python3.7/tensorflow/__init__.py", line 44, in _load
+    module = _importlib.import_module(self.__name__)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/tensorflow-1.15.2/python3.7/tensorflow_core/python/__init__.py", line 49, in <module>
+    from tensorflow.python import pywrap_tensorflow
+  File "/tensorflow-1.15.2/python3.7/tensorflow_core/python/pywrap_tensorflow.py", line 74, in <module>
+    raise ImportError(msg)
+ImportError: Traceback (most recent call last):
+  File "/tensorflow-1.15.2/python3.7/tensorflow_core/python/pywrap_tensorflow.py", line 58, in <module>
+    from tensorflow.python.pywrap_tensorflow_internal import *
+  File "/tensorflow-1.15.2/python3.7/tensorflow_core/python/pywrap_tensorflow_internal.py", line 28, in <module>
+    _pywrap_tensorflow_internal = swig_import_helper()
+  File "/tensorflow-1.15.2/python3.7/tensorflow_core/python/pywrap_tensorflow_internal.py", line 24, in swig_import_helper
+    _mod = imp.load_module('_pywrap_tensorflow_internal', fp, pathname, description)
+ImportError: dynamic module does not define init function (init_pywrap_tensorflow_internal)
+
+
+Failed to load the native TensorFlow runtime.
+
+See https://www.tensorflow.org/install/errors
+
+for some common reasons and solutions.  Include the entire stack trace
+above this error message when asking for help.
+```
+
+
+and asked [here](https://stackoverflow.com/questions/67342936/failed-to-load-the-native-tensorflow-runtime-colab-error) and on [the Issue part of the main project on GitHub site.](https://github.com/akanazawa/hmr/issues/155) :
+![image](https://user-images.githubusercontent.com/6679151/116770975-fa6b9600-aa5c-11eb-9f15-67e51e634114.png)
+
+
+
+
+
 
