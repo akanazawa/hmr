@@ -155,7 +155,10 @@ above this error message when asking for help.
 ```
 
 
+
 and asked [here](https://stackoverflow.com/questions/67342936/failed-to-load-the-native-tensorflow-runtime-colab-error) and on [the Issue part of the main project on GitHub site.](https://github.com/akanazawa/hmr/issues/155) :
+
+
 ![image](https://user-images.githubusercontent.com/6679151/116770975-fa6b9600-aa5c-11eb-9f15-67e51e634114.png)
 
 
