@@ -102,6 +102,10 @@ https://github.com/Dene33/video_to_bvh
 <img alt="bvh" src="https://i.imgur.com/QxML83b.gif" /><img alt="" src="https://i.imgur.com/vfge7DS.gif" />
 <img alt="bvh2" src=https://i.imgur.com/UvBM1gv.gif />
 
+[layumi](https://github.com/layumi) has added a 2D-to-3D color mapping function to the final obj: https://github.com/layumi/hmr
+<img width=200px src=https://github.com/layumi/hmr/blob/master/demo.png />
+
 I have not tested them, but the contributions are super cool! Thank you!!
+Let me know if you have any mods that you would like to be added here!
 
 
