@@ -9,8 +9,10 @@ def read_json(json_path):
     with open(json_path) as f:
         data = json.load(f)
     kps = []
+    # 20190820: adapt to new version of openpose demo
+    pose_key = 'pose_keypoints' if data['version'] == 1.0 else 'pose_keypoints_2d'
     for people in data['people']:
-        kp = np.array(people['pose_keypoints']).reshape(-1, 3)
+        kp = np.array(people[pose_key]).reshape(-1, 3)
         kps.append(kp)
     return kps
 
