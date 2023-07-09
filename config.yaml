@@ -1,0 +1,8 @@
+data_dir_on_host: "../../data/"
+data_dir: "/data"
+
+logging_output_directory_on_host: "/tmp/hmr"
+logging_output_directory: "/logs"
+logging_path: "/logs/log.html"
+
+test_data_dir: "/data/test_images_modified"

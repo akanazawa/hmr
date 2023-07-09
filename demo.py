@@ -1,7 +1,7 @@
 """
 Demo of HMR.
 
-Note that HMR requires the bounding box of the person in the image. The best performance is obtained when max length of the person in the image is roughly 150px. 
+Note that HMR requires the bounding box of the person in the image. The best performance is obtained when max length of the person in the image is roughly 150px.
 
 When only the image path is supplied, it assumes that the image is centered on a person whose length is roughly 150px.
 Alternatively, you can supply output of the openpose to figure out the bbox and the right scale factor.
@@ -85,9 +85,12 @@ def visualize(img, proc_param, joints, verts, cam):
     plt.title('diff vp')
     plt.axis('off')
     plt.draw()
-    plt.show()
+    # plt.show()
     # import ipdb
     # ipdb.set_trace()
+
+    plt.savefig('/logs/hmr_output.png')
+    print("Saved output!")
 
 
 def preprocess_image(img_path, json_path=None):

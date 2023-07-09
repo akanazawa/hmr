@@ -4,3 +4,5 @@ logs*/
 *.DS_Store
 *.pyc
 forrelease.sh
+
+models.tar.gz
