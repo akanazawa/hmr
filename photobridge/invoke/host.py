@@ -41,14 +41,18 @@ def run(context, config_path):
     # Define run options that need a bit of computations
     run_options = {
         # Use gpu runtime if host has cuda installed
-        "gpu_capabilities": "--gpus all" if "/cuda/" in os.environ["PATH"] else ""
+        "gpu_capabilities": "--gpus all" if "/cuda/" in os.environ["PATH"] else "",
+        "logging_output_directory_on_host": os.path.abspath(config.logging_output_directory_on_host),
+        "logging_output_directory": config.logging_output_directory,
+        "data_dir_on_host": os.path.abspath(config.data_dir_on_host),
+        "data_dir": config.data_dir
     }
 
     command = (
         "docker run -it --rm "
-        # "{gpu_capabilities} "
-        f"-v {os.path.abspath(config.logging_output_directory_on_host)}:{config.logging_output_directory} "
-        f"-v {os.path.abspath(config.data_dir_on_host)}:{config.data_dir} "
+        "{gpu_capabilities} "
+        "-v {logging_output_directory_on_host}:{logging_output_directory} "
+        "-v {data_dir_on_host}:{data_dir} "
         "-v $PWD:/app -w /app "
         "photobridge/hmr:latest /bin/bash"
     ).format(**run_options)

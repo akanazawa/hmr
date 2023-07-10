@@ -1,9 +1,9 @@
 # syntax = docker/dockerfile:experimental
-FROM tensorflow/tensorflow:1.12.3-py3
+FROM tensorflow/tensorflow:1.12.3-gpu-py3
 
 # Remove cuda sources list since it's key is not valid anymore, update and install a few dependencies
-# RUN rm /etc/apt/sources.list.d/cuda.list && \
-#     rm /etc/apt/sources.list.d/nvidia-ml.list && \
+RUN rm /etc/apt/sources.list.d/cuda.list && \
+    rm /etc/apt/sources.list.d/nvidia-ml.list
 #     apt update && apt install -y libcairo2-dev libgl1 freeglut3-dev xvfb
 
 RUN apt update && apt install -y libglu1-mesa-dev libosmesa6-dev

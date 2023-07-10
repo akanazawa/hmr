@@ -20,7 +20,7 @@ class RunModel(object):
         """
         self.config = config
         self.load_path = config.load_path
-        
+
         # Config + path
         if not config.load_path:
             raise Exception(
@@ -37,9 +37,9 @@ class RunModel(object):
 
         self.data_format = config.data_format
         self.smpl_model_path = config.smpl_model_path
-        
+
         input_size = (self.batch_size, self.img_size, self.img_size, 3)
-        self.images_pl = tf.placeholder(tf.float32, shape=input_size)
+        self.images_pl = tf.placeholder(tf.float32, shape=input_size, name="images_placeholder")
 
         # Model Settings
         self.num_stage = config.num_stage
@@ -49,7 +49,7 @@ class RunModel(object):
         self.num_cam = 3
         self.proj_fn = proj_util.batch_orth_proj_idrot
 
-        self.num_theta = 72        
+        self.num_theta = 72
         # Theta size: camera (3) + pose (24*3) + shape (10)
         self.total_params = self.num_cam + self.num_theta + 10
 
@@ -65,10 +65,10 @@ class RunModel(object):
             self.sess = tf.Session()
         else:
             self.sess = sess
-        
+
         # Load data.
         self.saver = tf.train.Saver()
-        self.prepare()        
+        self.prepare()
 
 
     def build_test_model_ief(self):
@@ -76,11 +76,11 @@ class RunModel(object):
         self.mean_var = tf.Variable(tf.zeros((1, self.total_params)), name="mean_param", dtype=tf.float32)
 
         img_enc_fn, threed_enc_fn = get_encoder_fn_separate(self.model_type)
-        # Extract image features.        
+        # Extract image features.
         self.img_feat, self.E_var = img_enc_fn(self.images_pl,
                                                is_training=False,
                                                reuse=False)
-        
+
         # Start loop
         self.all_verts = []
         self.all_kps = []
@@ -109,7 +109,7 @@ class RunModel(object):
             # Compute new theta
             theta_here = theta_prev + delta_theta
             # cam = N x 3, pose N x self.num_theta, shape: N x 10
-            cams = theta_here[:, :self.num_cam]                
+            cams = theta_here[:, :self.num_cam]
             poses = theta_here[:, self.num_cam:(self.num_cam + self.num_theta)]
             shapes = theta_here[:, (self.num_cam + self.num_theta):]
 
@@ -129,9 +129,9 @@ class RunModel(object):
 
     def prepare(self):
         print('Restoring checkpoint %s..' % self.load_path)
-        self.saver.restore(self.sess, self.load_path)        
+        self.saver.restore(self.sess, self.load_path)
         self.mean_value = self.sess.run(self.mean_var)
-            
+
     def predict(self, images, get_theta=False):
         """
         images: num_batch, img_size, img_size, 3

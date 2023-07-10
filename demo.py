@@ -47,6 +47,7 @@ def visualize(img, proc_param, joints, verts, cam):
 
     # Render results
     skel_img = vis_util.draw_skeleton(img, joints_orig)
+
     rend_img_overlay = renderer(
         vert_shifted, cam=cam_for_render, img=img, do_alpha=True)
     rend_img = renderer(
@@ -93,15 +94,15 @@ def visualize(img, proc_param, joints, verts, cam):
     print("Saved output!")
 
 
-def preprocess_image(img_path, json_path=None):
+def preprocess_image(img_path, json_path, model_configuration):
     img = io.imread(img_path)
     if img.shape[2] == 4:
         img = img[:, :, :3]
 
     if json_path is None:
-        if np.max(img.shape[:2]) != config.img_size:
-            print('Resizing so the max image size is %d..' % config.img_size)
-            scale = (float(config.img_size) / np.max(img.shape[:2]))
+        if np.max(img.shape[:2]) != model_configuration.img_size:
+            print('Resizing so the max image size is %d..' % model_configuration.img_size)
+            scale = (float(model_configuration.img_size) / np.max(img.shape[:2]))
         else:
             scale = 1.
         center = np.round(np.array(img.shape[:2]) / 2).astype(int)
@@ -110,8 +111,8 @@ def preprocess_image(img_path, json_path=None):
     else:
         scale, center = op_util.get_bbox(json_path)
 
-    crop, proc_param = img_util.scale_and_crop(img, scale, center,
-                                               config.img_size)
+    crop, proc_param = img_util.scale_and_crop(
+        img, scale, center, model_configuration.img_size)
 
     # Normalize image to [-1, 1]
     crop = 2 * ((crop / 255.) - 0.5)
@@ -123,7 +124,7 @@ def main(img_path, json_path=None):
     sess = tf.Session()
     model = RunModel(config, sess=sess)
 
-    input_img, proc_param, img = preprocess_image(img_path, json_path)
+    input_img, proc_param, img = preprocess_image(img_path, json_path, model_configuration=config)
     # Add batch dimension: 1 x D x D x 3
     input_img = np.expand_dims(input_img, 0)
 
